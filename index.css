@@ -1,0 +1,33 @@
+body {
+    margin: 0 ;
+    padding: 0;
+}
+
+header {
+    background-color: #EEE;
+    margin: auto ;
+    padding: 0;
+}
+
+.title {
+    padding: 10px;
+    display: grid;
+    align-content: center;
+    border-bottom: 3px rgb(244, 85, 85) solid;
+
+
+}
+
+h2 {
+    margin: 0;
+}
+
+#map {
+    height: 100%;
+}
+  /* Optional: Makes the sample page fill the window. */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
