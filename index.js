@@ -12,7 +12,7 @@
         //     map: map,
         // });
         const infoWindow = new google.maps.InfoWindow();
-        const locationButton = document.createElement("button");
+        // const locationButton = document.createElement("button");
 
         // 現在位置表示の処理
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
