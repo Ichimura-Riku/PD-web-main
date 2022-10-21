@@ -14,7 +14,7 @@
         const infoWindow = new google.maps.InfoWindow();
         const locationButton = document.createElement("button");
         
-        //バス停のマーカーをセット
+        //バス停の座標を入れた配列
         const busStop = [
             [36.519851, 136.609287], //野々市市役所
             [36.521955, 136.608943], //三納
@@ -51,10 +51,10 @@
         ]
         const busStopMarker = []
         const busStopImage = {
-            url: "busStopIMG.png",
+            url: "IMG/busStopIMG.png",
             scaledSize: new google.maps.Size(45, 60)
         }
-
+        //バス停のマーカーをセット
         for(let i = 0; i < busStop.length; i++){
             busStopMarker[i] = new google.maps.Marker({
                 map: map,
