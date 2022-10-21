@@ -51,7 +51,7 @@
         ]
         const busStopMarker = []
         const busStopImage = {
-            url: "busStopIMG.png",
+            url: "IMG/busStopIMG.png",
             scaledSize: new google.maps.Size(45, 60)
         }
         //バス停のマーカーをセット
