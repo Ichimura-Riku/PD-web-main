@@ -7,6 +7,8 @@ header {
     background-color: #EEE;
     margin: auto ;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .title {
@@ -14,13 +16,26 @@ header {
     display: grid;
     align-content: center;
     border-bottom: 3px rgb(244, 85, 85) solid;
-
-
 }
+
 
 h2 {
     margin: 0;
+    list-style: none;
+    float:left;
 }
+
+
+.btn_01 a{
+    
+    border: 1px solid #ce4949;
+    border-radius: 20px;
+    padding: 5px 20px;
+    
+    
+}
+
+
 
 #map {
     height: 100%;
@@ -30,4 +45,9 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  footer {
+    font-size:8px;
+    text-align: center;
   }
