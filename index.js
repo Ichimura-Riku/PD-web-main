@@ -1,9 +1,9 @@
 (() => {
     const initMap = () => {
         // マップの初期設定
-        const uluru = { lat: 36.519759814209486, lng: 136.60930881545332 };
+        const uluru = { lat: 36.52625627294591, lng: 136.61181585797752};
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 14,
+            zoom: 15,
             center: uluru,
         });
         // 野々市市にマーカーを置くやつ
