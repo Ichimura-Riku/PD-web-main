@@ -27,17 +27,15 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
         defer></script>
 
+
     <!-- firebaseの設定 -->
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
-        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
+        import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+        import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
 
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
         const firebaseConfig = {
             apiKey: "AIzaSyAPAEwhklEXdNAYTcFq6ejquO_cWd_KRmE",
             authDomain: "pdb5-notty.firebaseapp.com",
@@ -52,8 +50,58 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
-        const database = getDatabase();
-        console.log(database)
+        const database = getDatabase(app);
+        console.log(database.userLocation);
+
+        //書き込み操作
+        const writeUserData = (userId, name, email, imageUrl) => {
+            const db = getDatabase();
+            set(ref(db, 'users/' + userId), {
+                username: name,
+                email: email,
+                profile_picture: imageUrl
+            });
+        }
+
+        //データの読み取り
+        const db = getDatabase();
+        const starCountRef = ref(db, '/userLocation');
+        onValue(starCountRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data)
+
+        })
+
+
+
+        //データを一回読み取る js9
+
+        //const dbRef = ref(getDatabase());
+        //get(child(dbRef, `users/${"pdb5-notty"}`)).then((snapshot) => {
+        //    console.log(snapshot.child("userLocation").val());
+
+        //    if (snapshot.exists()) {
+        //        console.log(snapshot.child("userLocation").val());
+        //    } else {
+        //        console.log("No data available");
+        //    }
+        //}).catch((error) => {
+        //    console.error(error);
+        //});
+
+        //データを一回読み取る js9
+
+        //const dbRef = firebase.database().ref();
+        //dbRef.child("users").child(userId).get().then((snapshot) => {
+        //    if (snapshot.exists()) {
+        //        console.log(snapshot.val());
+        //    } else {
+        //        console.log("No data available");
+        //    }
+        //}).catch((error) => {
+        //    console.error(error);
+        //});
+//
 
     </script>
 
