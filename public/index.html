@@ -1,0 +1,95 @@
+<!-- のっティバスどこオリジナルlink : https://nottydoko-demo.sodeproject.com/ -->
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>PDのっティバスどこ</title>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script> -->
+    <script src="testImport.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+        defer></script>
+    <script type="module" async>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+        import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+    </script>
+    <script src="index.js"></script>
+
+
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <h2>のっティバスどこ</h2>
+        </div>
+    </header>
+    <div id="map"></div>
+
+
+
+
+
+    <!-- firebaseの設定 -->
+    <script type="module" async>
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+        import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPAEwhklEXdNAYTcFq6ejquO_cWd_KRmE",
+            authDomain: "pdb5-notty.firebaseapp.com",
+            databaseURL: "https://pdb5-notty-default-rtdb.firebaseio.com",
+            projectId: "pdb5-notty",
+            storageBucket: "pdb5-notty.appspot.com",
+            messagingSenderId: "806046809458",
+            appId: "1:806046809458:web:d19425b062cec2964d31eb",
+            measurementId: "G-0Z3EN0ZSCL"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+
+
+
+
+
+
+        //データの読み取り
+        const db = getDatabase();
+        const starCountRef = ref(db, '/userLocation');
+        onValue(starCountRef, (snapshot) => {
+            const data = snapshot.val();
+            const LatLngData = data.split(',');
+            const LatLng = { lat: 36.519759814209486, lng: 136.60930881545332 };
+            const userLatLng = { lat: Number(LatLngData[0]), lng: Number(LatLngData[1]) };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 14,
+                center: LatLng,
+            });
+            const marker = new google.maps.Marker({
+                position: userLatLng,
+                map: map,
+            });
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
