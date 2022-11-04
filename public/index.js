@@ -1,4 +1,6 @@
-
+// import { initializeApp } from 'firebase/app'
+// import { getAnalytics, setUserId } from "firebase/analytics";
+// import { getDatabase, ref, child, get, onValue } from "firebase/database";
 (() => {
     const initMap = () => {
 
@@ -20,16 +22,21 @@
 
 
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAPAEwhklEXdNAYTcFq6ejquO_cWd_KRmE",
-            authDomain: "pdb5-notty.firebaseapp.com",
-            databaseURL: "https://pdb5-notty-default-rtdb.firebaseio.com",
-            projectId: "pdb5-notty",
-            storageBucket: "pdb5-notty.appspot.com",
-            messagingSenderId: "806046809458",
-            appId: "1:806046809458:web:d19425b062cec2964d31eb",
-            measurementId: "G-0Z3EN0ZSCL"
-        };
+        // const firebaseConfig = {
+        //     apiKey: "AIzaSyAPAEwhklEXdNAYTcFq6ejquO_cWd_KRmE",
+        //     authDomain: "pdb5-notty.firebaseapp.com",
+        //     databaseURL: "https://pdb5-notty-default-rtdb.firebaseio.com",
+        //     projectId: "pdb5-notty",
+        //     storageBucket: "pdb5-notty.appspot.com",
+        //     messagingSenderId: "806046809458",
+        //     appId: "1:806046809458:web:d19425b062cec2964d31eb",
+        //     measurementId: "G-0Z3EN0ZSCL"
+        // };
+
+        // const app = initializeApp(firebaseConfig);
+        // const analytics = getAnalytics(app);
+        // const database = getDatabase(app);
+        // console.log(database.userLocation);
 
 
 
@@ -75,6 +82,7 @@
             // } else {
             //     // Browser doesn't support Geolocation
             //     handleLocationError(false, infoWindow, map.getCenter());
+            //             }
         }
     }
 

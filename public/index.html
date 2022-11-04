@@ -9,8 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>PDのっティバスどこ</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script> -->
+    <script src="testImport.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+        defer></script>
+    <script type="module" async>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+        import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+    </script>
+    <script src="index.js"></script>
+
 
 </head>
 
@@ -21,15 +32,13 @@
         </div>
     </header>
     <div id="map"></div>
-    <script src="index.js"></script>
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
-        defer></script>
+
+
 
 
     <!-- firebaseの設定 -->
-    <script type="module">
+    <script type="module" async>
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
         import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
@@ -51,59 +60,35 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const database = getDatabase(app);
-        console.log(database.userLocation);
 
-        //書き込み操作
-        const writeUserData = (userId, name, email, imageUrl) => {
-            const db = getDatabase();
-            set(ref(db, 'users/' + userId), {
-                username: name,
-                email: email,
-                profile_picture: imageUrl
-            });
-        }
+
+
+
+
 
         //データの読み取り
         const db = getDatabase();
         const starCountRef = ref(db, '/userLocation');
         onValue(starCountRef, (snapshot) => {
             const data = snapshot.val();
-            console.log(data)
-
+            const LatLngData = data.split(',');
+            const LatLng = { lat: 36.519759814209486, lng: 136.60930881545332 };
+            const userLatLng = { lat: Number(LatLngData[0]), lng: Number(LatLngData[1]) };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 14,
+                center: LatLng,
+            });
+            const marker = new google.maps.Marker({
+                position: userLatLng,
+                map: map,
+            });
         })
 
 
 
-        //データを一回読み取る js9
-
-        //const dbRef = ref(getDatabase());
-        //get(child(dbRef, `users/${"pdb5-notty"}`)).then((snapshot) => {
-        //    console.log(snapshot.child("userLocation").val());
-
-        //    if (snapshot.exists()) {
-        //        console.log(snapshot.child("userLocation").val());
-        //    } else {
-        //        console.log("No data available");
-        //    }
-        //}).catch((error) => {
-        //    console.error(error);
-        //});
-
-        //データを一回読み取る js9
-
-        //const dbRef = firebase.database().ref();
-        //dbRef.child("users").child(userId).get().then((snapshot) => {
-        //    if (snapshot.exists()) {
-        //        console.log(snapshot.val());
-        //    } else {
-        //        console.log("No data available");
-        //    }
-        //}).catch((error) => {
-        //    console.error(error);
-        //});
-//
 
     </script>
+
 
 </body>
 
