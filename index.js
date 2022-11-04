@@ -1,7 +1,7 @@
 (() => {
     const initMap = () => {
         // マップの初期設定
-        const uluru = { lat: 36.52625627294591, lng: 136.61181585797752};
+        const uluru = {lat: 36.52625627294591, lng: 136.61181585797752};
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 15,
             center: uluru,
