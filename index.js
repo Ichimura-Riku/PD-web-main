@@ -1,9 +1,17 @@
 (() => {
     const initMap = () => {
+<<<<<<< HEAD
         // マップの初期設定
         const uluru = {lat: 36.52625627294591, lng: 136.61181585797752};
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 15,
+=======
+
+        // マップの初期設定
+        const uluru = { lat: 36.519759814209486, lng: 136.60930881545332 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+>>>>>>> 73e18bcb09d99113324282616b7e686892e09639
             center: uluru,
         });
         // 野々市市にマーカーを置くやつ
@@ -12,6 +20,7 @@
         //     map: map,
         // });
         const infoWindow = new google.maps.InfoWindow();
+<<<<<<< HEAD
         const locationButton = document.createElement("button");
         
         //バス停の座標を入れた配列
@@ -167,6 +176,59 @@
 
     }
 
+=======
+        // const locationButton = document.createElement("button");
+
+
+        // 現在位置表示の処理
+        // map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+        const getBusLocation = (location) => {
+            LatLng = location.split(',');
+            const pos = {
+                lat: LatLng[0],
+                lng: LatLng[1]
+            }
+            infoWindow.open(map)
+            const marker2 = new google.maps.Marker({
+                position: pos,
+                map: map,
+            });
+            infoWindow.open(map);
+            () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+            }
+            // if (navigator.geolocation) {
+            //     navigator.geolocation.getCurrentPosition(
+            //         (position) => {
+            //             const pos = {
+            //                 lat: position.coords.latitude,
+            //                 lng: position.coords.longitude,
+            //             };
+
+
+            //             infoWindow.open(map);
+            //             // ここでマーカーをセットする
+            //             const marker2 = new google.maps.Marker({
+            //                 position: pos,
+            //                 map: map,
+            //             });
+            //             infoWindow.open(map);
+            //             // map.setCenter(pos);
+            //         },
+            //         () => {
+            //             handleLocationError(true, infoWindow, map.getCenter());
+            //         }
+            //     );
+            // } else {
+            //     // Browser doesn't support Geolocation
+            //     handleLocationError(false, infoWindow, map.getCenter());
+            //             }
+        }
+    }
+
+
+
+>>>>>>> 73e18bcb09d99113324282616b7e686892e09639
     handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
         infoWindow.setPosition(pos);
         infoWindow.setContent(
