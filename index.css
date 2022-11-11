@@ -7,27 +7,57 @@ header {
     background-color: #EEE;
     margin: auto ;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
 }
+
 
 .title {
     padding: 10px;
     display: grid;
     align-content: center;
     border-bottom: 3px rgb(244, 85, 85) solid;
-
-
 }
+
 
 h2 {
     margin: 0;
+    list-style: none;
+    float:left;
 }
 
+
+.btn--orange,
+a.btn--orange{
+    
+    color: #fff;
+    background-color: rgb(244, 85, 85);
+    display: flex;
+    flex-direction: column;
+    
+}
+.btn--orange:hover,
+a.btn--orange:hover{
+    color: #fff;
+    background: rgb(244, 85, 85);
+}
+a.btn--radius{
+    border-radius: 100vh;
+}
+
+
 #map {
-    height: 100%;
+    height: 90%;
+
 }
   /* Optional: Makes the sample page fill the window. */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  footer {
+    font-size:10px;
+    text-align: center;
   }
