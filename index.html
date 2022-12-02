@@ -19,7 +19,7 @@
         import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
         import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
     </script>
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
 
 
 </head>
@@ -66,6 +66,15 @@
                 const userLatLng = { lat: Number(LatLngData[0]), lng: Number(LatLngData[1]) };
 
             })
+
+        }
+        handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(
+                browserHasGeolocation
+                    ? "Error: The Geolocation service failed."
+                    : "Error: Your browser doesn't support geolocation."
+            );
 
         }
         window.initMap = initMap;
