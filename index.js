@@ -61,6 +61,25 @@
                 position: { lat: busStop[i][0], lng: busStop[i][1] },
                 icon: busStopImage,
             })
+
+            busStopMarker[i].addListener('click', function(){
+                var jikan = new Date();
+
+                var hour = jikan.getHours();
+                var minute = jikan.getMinutes();
+                var second = jikan.getSeconds();
+
+                var hanntei = 0;
+
+                $('#panel-central').animate({
+                    'left':'0px',
+                });
+
+                var timeTableNameCenter = document.getElementById('timeTable-name-center');
+                var nextTimeCentral = document.getElementById('nextTime-central');
+                var timeTableBodyCenter = document.getElementById('timeTable-body-center');
+                
+            }
         }
 
         //走行ルートの座標
@@ -126,6 +145,28 @@
             { lat: 36.52304173961177, lng: 136.60911928677604 },
             { lat: 36.519906, lng: 136.608859 },
         ];
+
+        function setBusStopMakers(map){
+            const busStopMaker = [];
+            const infowindow = [];
+            let openedInfowindow = [];
+            const image = {
+                
+            }
+            function SelectPage( page ){
+                var elementPage1 = document.getElementById("page1");
+
+                switch( page ){
+                    case 1:
+                        elementPage1.style.display = 'none';
+                        break;
+                    case 2:
+                        elementPage1.style.display = 'block';
+                        break;
+                }
+            }
+        }
+
         //ポリラインのセット
         const runningPath = new google.maps.Polyline({
             path: runningPlanCoordinates,
