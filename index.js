@@ -62,24 +62,7 @@
                 icon: busStopImage,
             })
 
-            busStopMarker[i].addListener('click', function(){
-                var jikan = new Date();
-
-                var hour = jikan.getHours();
-                var minute = jikan.getMinutes();
-                var second = jikan.getSeconds();
-
-                var hanntei = 0;
-
-                $('#panel-central').animate({
-                    'left':'0px',
-                });
-
-                var timeTableNameCenter = document.getElementById('timeTable-name-center');
-                var nextTimeCentral = document.getElementById('nextTime-central');
-                var timeTableBodyCenter = document.getElementById('timeTable-body-center');
-                
-            }
+            
         }
 
         //走行ルートの座標
