@@ -1,5 +1,6 @@
 <!-- のっティバスどこオリジナルlink : https://nottydoko-demo.sodeproject.com/ -->
 
+<!-- file:///C:/Users/kuro_/OneDrive/%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97/%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E9%96%8B%E7%99%BA/PD-web-main/index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -9,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>PDのっティバスどこ</title>
-    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script> -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
         defer></script>
@@ -19,17 +20,27 @@
         import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
         import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
     </script>
-    <!-- <script src="index.js"></script> -->
+    <script src="index.js"></script>
 
 
 </head>
 
 <body>
     <header>
+
         <div class="title">
             <h2>のっティバスどこ</h2>
         </div>
+        <div class="btn_01">
+            <a id href="https://docs.google.com/forms/d/10GF3KNsu5gUSH5IFMuPXVkm-CsVy7Ata2ij7kB654qg/edit"
+                target="_blank" rel="noopener noreferrer" class="btn btn--orange btn--radius">
+                <h3>アンケート</h3>
+            </a>
+        </div>
+
+
     </header>
+
     <div id="map"></div>
 
 
@@ -41,43 +52,78 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
         import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
         import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-        const initMap = () => {
-            const firebaseConfig = {
-                apiKey: "AIzaSyAPAEwhklEXdNAYTcFq6ejquO_cWd_KRmE",
-                authDomain: "pdb5-notty.firebaseapp.com",
-                databaseURL: "https://pdb5-notty-default-rtdb.firebaseio.com",
-                projectId: "pdb5-notty",
-                storageBucket: "pdb5-notty.appspot.com",
-                messagingSenderId: "806046809458",
-                appId: "1:806046809458:web:d19425b062cec2964d31eb",
-                measurementId: "G-0Z3EN0ZSCL"
-            };
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
-            const database = getDatabase(app);
 
-            const db = getDatabase();
-            const starCountRef = ref(db, '/userLocation');
-            onValue(starCountRef, (snapshot) => {
-                const data = snapshot.val();
-                const LatLngData = data.split(',');
-                const LatLng = { lat: 36.519759814209486, lng: 136.60930881545332 };
-                const userLatLng = { lat: Number(LatLngData[0]), lng: Number(LatLngData[1]) };
+        // 動かないそもそも読み込まれないinitMap()
+        //const initMap = () => {
+        //    const firebaseConfig = {
+        //        apiKey: "AIzaSyAPAEwhklEXdNAYTcFq6ejquO_cWd_KRmE",
+        //        authDomain: "pdb5-notty.firebaseapp.com",
+        //        databaseURL: "https://pdb5-notty-default-rtdb.firebaseio.com",
+        //        projectId: "pdb5-notty",
+        //        storageBucket: "pdb5-notty.appspot.com",
+        //        messagingSenderId: "806046809458",
+        //        appId: "1:806046809458:web:d19425b062cec2964d31eb",
+        //        measurementId: "G-0Z3EN0ZSCL"
+        //    };
+        //    // Initialize Firebase
+        //    const app = initializeApp(firebaseConfig);
+        //    const analytics = getAnalytics(app);
+        //    const database = getDatabase(app);
 
+        //    const db = getDatabase();
+        //    const starCountRef = ref(db, '/userLocation');
+        //    onValue(starCountRef, (snapshot) => {
+        //        const data = snapshot.val();
+        //        const LatLngData = data.split(',');
+        //        const LatLng = { lat: 36.519759814209486, lng: 136.60930881545332 };
+        //        const userLatLng = { lat: Number(LatLngData[0]), lng: Number(LatLngData[1]) };
+        //        console.log('data');
+
+        //    })
+
+        //}
+        //handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
+        //    infoWindow.setPosition(pos);
+        //    infoWindow.setContent(
+        //        browserHasGeolocation
+        //            ? "Error: The Geolocation service failed."
+        //            : "Error: Your browser doesn't support geolocation."
+        //    );
+        //    //
+        //}
+        //window.initMap = initMap;
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPAEwhklEXdNAYTcFq6ejquO_cWd_KRmE",
+            authDomain: "pdb5-notty.firebaseapp.com",
+            databaseURL: "https://pdb5-notty-default-rtdb.firebaseio.com",
+            projectId: "pdb5-notty",
+            storageBucket: "pdb5-notty.appspot.com",
+            messagingSenderId: "806046809458",
+            appId: "1:806046809458:web:d19425b062cec2964d31eb",
+            measurementId: "G-0Z3EN0ZSCL"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+
+        const db = getDatabase();
+        const starCountRef = ref(db, '/userLocation');
+        onValue(starCountRef, (snapshot) => {
+            const data = snapshot.val();
+            const LatLngData = data.split(',');
+            const LatLng = { lat: 36.519759814209486, lng: 136.60930881545332 };
+            const userLatLng = { lat: Number(LatLngData[0]), lng: Number(LatLngData[1]) };
+            console.log('data');
+            let marker = new google.maps.Marker({
+                position: userLatLng,
+                map: map,
             })
 
-        }
-        handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(
-                browserHasGeolocation
-                    ? "Error: The Geolocation service failed."
-                    : "Error: Your browser doesn't support geolocation."
-            );
+        })
 
-        }
-        window.initMap = initMap;
 
 
     </script>
