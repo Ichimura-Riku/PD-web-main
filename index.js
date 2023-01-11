@@ -177,34 +177,35 @@
         });
         runningPath.setMap(map);
 
-        //         // 現在位置表示の処理
-        //         map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-        //         if (navigator.geolocation) {
-        //             navigator.geolocation.getCurrentPosition(
-        //                 (position) => {
-        //                     const pos = {
-        //                         lat: position.coords.latitude,
-        //                         lng: position.coords.longitude,
-        //                     };
+                // 現在位置表示の処理
+                map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+                console.log('現在位置')
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude,
+                            };
 
 
-        //                     infoWindow.open(map);
-        //                     // ここでマーカーをセットする
-        //                     const marker2 = new google.maps.Marker({
-        //                         position: pos,
-        //                         map: map,
-        //                     });
-        //                     infoWindow.open(map);
-        //                     // map.setCenter(pos);
-        //                 },
-        //                 () => {
-        //                     handleLocationError(true, infoWindow, map.getCenter());
-        //                 }
-        //             );
-        //         } else {
-        //             // Browser doesn't support Geolocation
-        //             handleLocationError(false, infoWindow, map.getCenter());
-        //         }
+                            infoWindow.open(map);
+                            // ここでマーカーをセットする
+                            const marker2 = new google.maps.Marker({
+                                position: pos,
+                                map: map,
+                            });
+                            infoWindow.open(map);
+                            // map.setCenter(pos);
+                        },
+                        () => {
+                            handleLocationError(true, infoWindow, map.getCenter());
+                        }
+                    );
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
 
     }
 

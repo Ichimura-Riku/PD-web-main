@@ -15,11 +15,7 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
         defer></script>
-    <script type="module" async>
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-        import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
-        import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-    </script>
+
     <script src="index.js"></script>
 
 
@@ -51,7 +47,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
         import { getAnalytics, setUserId } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
-        import { getDatabase, ref, child, get, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+        import { getDatabase, ref, child, get, onValue, set } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
 
         // 動かないそもそも読み込まれないinitMap()
         //const initMap = () => {
@@ -111,16 +107,33 @@
 
         const db = getDatabase();
         const starCountRef = ref(db, '/userLocation');
+        //set(starCountRef, {
+        //    userLocation: "36.51978568095163, 136.60930881545332"
+
+        //});
+        let marker = null
+        const busIcon = {
+            url: "IMG/busIcon.png",
+            scaledSize: new google.maps.Size(45, 60)
+        }
+
         onValue(starCountRef, (snapshot) => {
+            if (marker !== null) {
+
+                marker.setVisible(false)
+            }
+            console.log('バスの位置')
             const data = snapshot.val();
             const LatLngData = data.split(',');
             const LatLng = { lat: 36.519759814209486, lng: 136.60930881545332 };
             const userLatLng = { lat: Number(LatLngData[0]), lng: Number(LatLngData[1]) };
             console.log('data');
-            let marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
                 position: userLatLng,
                 map: map,
+                icon: busIcon
             })
+
 
         })
 
