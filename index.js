@@ -182,7 +182,7 @@
         console.log('現在位置')
         const userIcon = {
             url: "IMG/userLocation.png",
-            scaledSize: new google.maps.Size(45, 45)
+            scaledSize: new google.maps.Size(60, 60)
         }
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
